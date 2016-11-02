@@ -39,6 +39,16 @@
         <item name="android:layout_marginTop">@dimen/ucrop_margit_top_widget_text</item>
         <item name="android:textColor">@color/ucrop_color_widget_text</item>
         <item name="android:textSize">@dimen/ucrop_text_size_widget_text</item>
+        <item name="android:textStyle">bold</item>
     </style>
-
+    <style name="ucrop_MainTextViewWidgetText">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/ucrop_margit_top_widget_text</item>
+        <item name="android:textColor">@color/ucrop_scale_text_view_selector</item>
+        <item name="android:textSize">@dimen/ucrop_main_text_size_widget_text</item>
+        <item name="android:duplicateParentState">true</item>
+    </style>
 </resources>

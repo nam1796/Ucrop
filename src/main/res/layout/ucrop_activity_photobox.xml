@@ -1,27 +1,51 @@
-<RelativeLayout
-    android:id="@+id/ucrop_photobox"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ucrop_photobox"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/ucrop_color_toolbar"
-        android:minHeight="?attr/actionBarSize">
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp">
 
-        <TextView
-            android:id="@+id/toolbar_title"
-            style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/ucrop_label_edit_photo"
-            android:textColor="@color/ucrop_color_toolbar_widget"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
+            <TextView
+                android:id="@+id/toolbar_cancel"
+                style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:onClick="doCancel"
+                android:text="@string/ucrop_menu_cancel"
+                android:textColor="@color/ucrop_color_toolbar_widget"
+                android:gravity="center"
+                android:background="?attr/actionBarItemBackground"/>
+
+            <TextView
+                android:id="@+id/toolbar_apply"
+                style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:onClick="doDone"
+                android:text="@string/ucrop_menu_crop"
+                android:textColor="@color/ucrop_color_toolbar_widget"
+                android:gravity="center"
+                android:background="?attr/actionBarItemBackground"/>
+        </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout
@@ -39,14 +63,14 @@
             android:layout_gravity="center"
             app:srcCompat="@drawable/ucrop_vector_ic_crop"
             tools:background="@drawable/ucrop_vector_ic_crop"
-            tools:ignore="MissingPrefix"/>
+            tools:ignore="MissingPrefix" />
 
         <com.yalantis.ucrop.view.UCropView
             android:id="@+id/ucrop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0"
-            android:background="#cecece"/>
+            android:background="#cecece" />
 
     </FrameLayout>
 

@@ -45,10 +45,11 @@
             android:id="@+id/state_scale"
             style="@style/ucrop_WrapperIconState">
 
-            <ImageView
+            <TextView
                 android:id="@+id/image_view_state_scale"
-                style="@style/ucrop_ImageViewWidgetIcon"
-                android:src="@drawable/ucrop_ic_scale"/>
+                style="@style/ucrop_MainTextViewWidgetText"
+                android:drawableTop="@drawable/ucrop_ic_scale"
+                android:text="@string/ucrop_zoom"/>
 
         </FrameLayout>
 
@@ -56,10 +57,11 @@
             android:id="@+id/state_aspect_ratio"
             style="@style/ucrop_WrapperIconState">
 
-            <ImageView
+            <TextView
                 android:id="@+id/image_view_state_aspect_ratio"
-                style="@style/ucrop_ImageViewWidgetIcon"
-                android:src="@drawable/ucrop_ic_crop"/>
+                style="@style/ucrop_MainTextViewWidgetText"
+                android:drawableTop="@drawable/ucrop_ic_crop"
+                android:text="@string/ucrop_crop"/>
 
         </FrameLayout>
 
@@ -67,10 +69,11 @@
             android:id="@+id/state_rotate"
             style="@style/ucrop_WrapperIconState">
 
-            <ImageView
+            <TextView
                 android:id="@+id/image_view_state_rotate"
-                style="@style/ucrop_ImageViewWidgetIcon"
-                android:src="@drawable/ucrop_ic_rotate"/>
+                style="@style/ucrop_MainTextViewWidgetText"
+                android:drawableTop="@drawable/ucrop_ic_rotate"
+                android:text="@string/ucrop_rotate"/>
 
         </FrameLayout>
 

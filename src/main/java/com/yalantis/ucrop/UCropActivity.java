@@ -116,7 +116,7 @@ public class UCropActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.ucrop_menu_activity, menu);
+        /*getMenuInflater().inflate(R.menu.ucrop_menu_activity, menu);
 
         // Change crop & loader menu icons color to match the rest of the UI colors
 
@@ -139,15 +139,15 @@ public class UCropActivity extends AppCompatActivity {
             menuItemCropIcon.mutate();
             menuItemCropIcon.setColorFilter(mToolbarWidgetColor, PorterDuff.Mode.SRC_ATOP);
             menuItemCrop.setIcon(menuItemCropIcon);
-        }
+        }*/
 
         return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.menu_crop).setVisible(!mShowLoader);
-        menu.findItem(R.id.menu_loader).setVisible(mShowLoader);
+        /*menu.findItem(R.id.menu_crop).setVisible(!mShowLoader);
+        menu.findItem(R.id.menu_loader).setVisible(mShowLoader);*/
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -159,6 +159,14 @@ public class UCropActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void doDone(View v){
+        cropAndSaveImage();
+    }
+
+    public void doCancel(View v){
+        onBackPressed();
     }
 
     @Override
@@ -216,7 +224,6 @@ public class UCropActivity extends AppCompatActivity {
         mGestureCropImageView.setMaxBitmapSize(intent.getIntExtra(UCrop.Options.EXTRA_MAX_BITMAP_SIZE, CropImageView.DEFAULT_MAX_BITMAP_SIZE));
         mGestureCropImageView.setMaxScaleMultiplier(intent.getFloatExtra(UCrop.Options.EXTRA_MAX_SCALE_MULTIPLIER, CropImageView.DEFAULT_MAX_SCALE_MULTIPLIER));
         mGestureCropImageView.setImageToWrapCropBoundsAnimDuration(intent.getIntExtra(UCrop.Options.EXTRA_IMAGE_TO_CROP_BOUNDS_ANIM_DURATION, CropImageView.DEFAULT_IMAGE_TO_CROP_BOUNDS_ANIM_DURATION));
-
 
         // Overlay view options
         mOverlayView.setFreestyleCropEnabled(intent.getBooleanExtra(UCrop.Options.EXTRA_FREE_STYLE_CROP, OverlayView.DEFAULT_FREESTYLE_CROP_ENABLED));
@@ -310,14 +317,14 @@ public class UCropActivity extends AppCompatActivity {
         toolbar.setBackgroundColor(mToolbarColor);
         toolbar.setTitleTextColor(mToolbarWidgetColor);
 
-        final TextView toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        /*final TextView toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         toolbarTitle.setTextColor(mToolbarWidgetColor);
-        toolbarTitle.setText(mToolbarTitle);
+        toolbarTitle.setText(mToolbarTitle);*/
 
         // Color buttons inside the Toolbar
-        Drawable stateButtonDrawable = ContextCompat.getDrawable(this, R.drawable.ucrop_ic_cross).mutate();
+       /* Drawable stateButtonDrawable = ContextCompat.getDrawable(this, R.drawable.ucrop_ic_cross).mutate();
         stateButtonDrawable.setColorFilter(mToolbarWidgetColor, PorterDuff.Mode.SRC_ATOP);
-        toolbar.setNavigationIcon(stateButtonDrawable);
+        toolbar.setNavigationIcon(stateButtonDrawable);*/
 
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
@@ -367,13 +374,16 @@ public class UCropActivity extends AppCompatActivity {
      * Use {@link #mActiveWidgetColor} for color filter
      */
     private void setupStatesWrapper() {
-        ImageView stateScaleImageView = (ImageView) findViewById(R.id.image_view_state_scale);
-        ImageView stateRotateImageView = (ImageView) findViewById(R.id.image_view_state_rotate);
-        ImageView stateAspectRatioImageView = (ImageView) findViewById(R.id.image_view_state_aspect_ratio);
+        TextView stateScaleImageView = (TextView) findViewById(R.id.image_view_state_scale);
+        TextView stateRotateImageView = (TextView) findViewById(R.id.image_view_state_rotate);
+        TextView stateAspectRatioImageView = (TextView) findViewById(R.id.image_view_state_aspect_ratio);
 
-        stateScaleImageView.setImageDrawable(new SelectedStateListDrawable(stateScaleImageView.getDrawable(), mActiveWidgetColor));
-        stateRotateImageView.setImageDrawable(new SelectedStateListDrawable(stateRotateImageView.getDrawable(), mActiveWidgetColor));
-        stateAspectRatioImageView.setImageDrawable(new SelectedStateListDrawable(stateAspectRatioImageView.getDrawable(), mActiveWidgetColor));
+        stateScaleImageView.setCompoundDrawablesWithIntrinsicBounds(null,
+                new SelectedStateListDrawable(stateScaleImageView.getCompoundDrawables()[1], mActiveWidgetColor), null, null);
+        stateRotateImageView.setCompoundDrawablesWithIntrinsicBounds(null,
+                new SelectedStateListDrawable(stateRotateImageView.getCompoundDrawables()[1], mActiveWidgetColor), null, null);
+        stateAspectRatioImageView.setCompoundDrawablesWithIntrinsicBounds(null,
+                new SelectedStateListDrawable(stateAspectRatioImageView.getCompoundDrawables()[1], mActiveWidgetColor), null, null);
     }
 
 
